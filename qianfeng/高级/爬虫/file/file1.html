@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Get free items">
+<meta name="keywords" content="Get free items">
+<title>Fullyrebate</title>
+<link rel="shortcut icon" href="/Public/images/favicon.ico">
+<link rel="stylesheet" href="/Public/css/weui.min.css">
+<link rel="stylesheet" href="/Public/css/common.css?v20190611">
+<!--[if lte IE 9]>
+<script>
+    window.location.href = "/Error/upgrade";
+</script>
+<![endif]-->
+
+
+    <meta property="og:url" content="https://www.fullyrebate.com/" />
+<meta property="og:site_name" content="Fullyrebate" />
+<meta property="og:image" content="https://www.fullyrebate.com/Public/images/share-fb-20190318.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="I think you will love these awesome freebies. Check it out, my friend.">
+<meta property="og:description" content="More than 200+ free products. You need just purchase on Amazon, and upload a product photo, then 100% rebate will be sent to your PayPal. It's guaranteed">
+
+</head>
+<body>
+<div id="box" class="jackson-box packWill-group-body" v-cloak>
+    <div class="weui-tab">
+        <div class="weui-tab__panel" id="jackson-tab-panel" @scroll.passive="scrollLoad()">
+            <div class="get-free-sample-process">
+                <div class="get-free-sample-process-title">How to get free items</div>
+                <div class="jackson-flex-row jackson-flex-y get-free-sample-process-detail">
+                    <div class="jackson-flex-1">
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                    </div>
+                    <div class="jackson-flex-1-5">
+                        <div class="iconfont process-icon-shopping">&#xe6d8;</div>
+                    </div>
+                    <div class="jackson-flex-2">
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                        <span class="iconfont process-icon-connect">&#xe605;</span>
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                    </div>
+                    <div class="jackson-flex-1-5">
+                        <div class="iconfont process-icon-shopping">&#xe619;</div>
+
+                    </div>
+                    <div class="jackson-flex-2">
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                        <span class="iconfont process-icon-connect">&#xe605;</span>
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                    </div>
+                    <div class="jackson-flex-1-5">
+                        <div class="iconfont process-icon-shopping">&#xe60a;</div>
+                    </div>
+                    <div class="jackson-flex-1">
+                        <span class="iconfont process-icon-connect">&#xe6c1;</span>
+                    </div>
+                </div>
+                <div class="jackson-flex-row jackson-flex-y get-free-sample-process-txt">
+                    <div class="jackson-flex-2 jackson-flex-row jackson-flex-x process-txt">Buy on Amazon</div>
+                    <div class="jackson-flex-3 jackson-flex-row jackson-flex-x process-txt">Submit product photo</div>
+                    <div class="jackson-flex-2-5 jackson-flex-row jackson-flex-x process-txt">Full rebate to PayPal</div>
+                </div>
+
+                <div class="free-sample-rules home" @click.stop="isRulesDialogShow = !isRulesDialogShow"><span>Rules</span><i class="iconfont">&#xe639;</i></div>
+
+            </div>
+
+            <free-item-list ref="free-item-list"></free-item-list>
+
+            <div style="display: none;">
+                <get-free-item ref="get-free-item-sp"
+                               :order-id="orderIDCurr"
+                               v-if="orderIDCurr">
+                </get-free-item>
+            </div>
+
+        </div>
+
+        <tabbar-bottom :page-curr="pageCurr"></tabbar-bottom>
+
+        <lucky-box></lucky-box>
+
+        <!--MountGao-loading-start-->
+<div id="MountGao-tips-loading" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-loading weui-icon_toast"></i>
+        <p class="weui-toast__content MountGao-tips-txt">loading...</p>
+    </div>
+</div>
+<!--MountGao-loading-end-->
+<!--MountGao-toast-start-->
+<div id="MountGao-tips-toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast jackson-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content MountGao-tips-txt">loading...</p>
+    </div>
+</div>
+<!--MountGao-toast-end-->
+
+        <div class="jackson-modal" v-show="isRulesDialogShow">
+    <div class="jackson-modal-bg"></div>
+    <div class="jackson-modal-dialog">
+        <a href="javascript:;" class="iconfont jackson-modal-dialog-close" @click.stop="isRulesDialogShow = !isRulesDialogShow">&#xe662;</a>
+        <div class="jackson-modal-dialog-content">
+            <div class="jackson-modal-dialog-header">
+                <div class="jackson-modal-dialog-title">Rules</div>
+            </div>
+            <div class="jackson-modal-dialog-body">
+                <p>1. Choose a product and purchase on Amazon. Then upload a product photo and you will get 100% rebate in 2 work days. Rebate is guaranteed!</p><br>
+                <p>2. Please provide your PayPay account so we can send you the rebate.</p><br>
+                <p>3. You can earn reward points by inviting friends and then redeem the points to apply the free products.</p><br>
+                <p>4. It's prohibited to return the product after receiving rebate.</p><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<script src="/Public/js/vue.min.js"></script>
+<script src="/Public/js/vuex.min.js"></script>
+<script src="/Public/js/vue-lazyload.js"></script>
+<script src="/Public/js/axios.min.js"></script>
+<script src="/Public/js/axios_promise.js"></script>
+<script src="/Public/js/common.js?v20190731"></script>
+<script>
+
+    Vue.use(VueLazyload, {
+        error: '/Public/images/error.png',
+        loading: '/Public/images/ajax-loading.gif',
+    });
+
+    MOUNTGAO.DATA.store =  new Vuex.Store({
+        state: {
+            count: 0,
+            buyer: {},
+            buyerID: "",
+            buyerTimeoutID: 0,
+            buyerDelay: 1000 * 60,
+            loginURL: "https://www.fullyrebate.com/Buyer/checkLogin",
+            NUA: (function () {
+                var navigatorUserAgent = navigator.userAgent,
+                    isSafariBrowserOrUCBrowser =  (/Safari/.test(navigatorUserAgent) && !/Chrome/.test(navigatorUserAgent) && !/CriOS/.test(navigatorUserAgent)) || /UCBrowser/.test(navigatorUserAgent),
+                    isChromeFirefoxSamsungBrowser = /Chrome/.test(navigatorUserAgent)
+                        || (/Safari/.test(navigatorUserAgent) && !/Chrome/.test(navigatorUserAgent) && /CriOS/.test(navigatorUserAgent))
+                        || /Firefox/.test(navigatorUserAgent)
+                        || (/Safari/.test(navigatorUserAgent) && !/Firefox/.test(navigatorUserAgent) && /FxiOS/.test(navigatorUserAgent))
+                        || /SamsungBrowser/.test(navigatorUserAgent),
+                    isHuaWeiBrowser = /HUAWEI/.test(navigatorUserAgent),
+                    isAndroid =  /Android/.test(navigatorUserAgent) || /Linux/.test(navigatorUserAgent),
+                    isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigatorUserAgent),
+                    isFBMessengerBrowser = /FBAV|FBAN/.test(navigatorUserAgent);
+                return {
+                    isSafariBrowserOrUCBrowser: isSafariBrowserOrUCBrowser,
+                    isChromeFirefoxSamsungBrowser: isChromeFirefoxSamsungBrowser,
+                    isHuaWeiBrowser: isHuaWeiBrowser,
+                    isAndroid: isAndroid,
+                    isMobile: isMobile,
+                    isFBMessengerBrowser: isFBMessengerBrowser,
+                }
+            }())
+        },
+        getters: {
+            messengerSharerURL: function (state) {
+                var documentURL = encodeURIComponent(document.URL),
+                    mobileShareURL = "fb-messenger://share/?link=" + documentURL,
+                    pcShareURL = "https://www.facebook.com/dialog/send?display=popup&app_id=" + "391577221408263" + "&link=" + documentURL + "&redirect_uri=" + documentURL;
+                return  state.NUA.isMobile?mobileShareURL:pcShareURL;
+            },
+            isMessengerBrowserArrowShow: function (state) {
+                var isMessengerBrowserDisable=  "";
+                return state.NUA.isMobile && !isMessengerBrowserDisable && state.NUA.isFBMessengerBrowser;
+            },
+            purchaseLinkPrefix: function (state) {
+                var webPurchaseLink = "https://www.amazon.com/dp/",
+                    appPurchaseLink = "com.amazon.mobile.shopping.web://www.amazon.com/dp/";
+                return  state.NUA.isMobile?appPurchaseLink:webPurchaseLink;
+            },
+        },
+        mutations: {
+            increment: function (state) {
+                state.count++
+            },
+            setBuyerID: function (state,id) {
+                state.buyerID = id;
+            },
+            setBuyer: function (state,buyer) {
+                state.buyer = buyer;
+            },
+            setBuyerTimeoutID: function (state,id) {
+                state.buyerTimeoutID = id;
+            },
+            setLoginURL: function (state,url) {
+                state.loginURL = url;
+            }
+        },
+        actions: {
+            increment: function (context) {
+                context.commit('increment')
+            },
+            getGoods: function () {
+                return "goods";
+            }
+        }
+    })
+</script>
+
+<script type="text/x-template" id="rewards-dialog-template">
+    <div class="jackson-modal" v-if="isDisplay">
+        <div class="jackson-modal-bg"></div>
+        <div class="jackson-modal-dialog">
+            <div class="jackson-modal-dialog-content">
+                <div class="jackson-modal-dialog-header-tips">{{title}}</div>
+                <div class="jackson-modal-dialog-header-second">
+                    <slot></slot>
+                </div>
+                <div class="jackson-modal-dialog-body fullyRebate-rewards-content">
+                    <div class="jackson-center">
+                        <img src="/Public/images/rewards-box.png" alt="" class="rewards-box">
+                    </div>
+                    <template v-for="(task, index) in tasksList">
+                        <div class="jackson-flex-row jackson-flex-y jackson-flex-sb rewards-methods-item" v-show="task === 'fb'">
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-l">
+                                <i class="iconfont fb">&#xe60c;</i>
+                                <div>
+                                    <p>Click 'Like' to win {{facebookSharePoints}} points</p>
+                                    <p>RP: {{facebookSharePoints}}</p>
+                                </div>
+                            </div>
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-r">
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled" v-if="isFBShareDone">Done</a>
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled" v-else-if="!isAmerican">Go</a>
+                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click.stop="addPoints('facebook_share')" v-else>Go</a>
+                            </div>
+                        </div>
+                        <div class="jackson-flex-row jackson-flex-y jackson-flex-sb rewards-methods-item" v-show="task === 'fbMessenger'">
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-l">
+                                <i class="iconfont fb-messenger">&#xe663;</i>
+                                <div>
+                                    <p>Send 'RP' to win {{messengerSharePoints}} points</p>
+                                    <p>RP: {{messengerSharePoints}}</p>
+                                </div>
+                            </div>
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-r">
+                                <a href="javascript:;"
+                                   class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled"
+                                   v-if="isMessengerShareDone">Done</a>
+                                <a href="javascript:;"
+                                   class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled"
+                                   v-else-if="!isAmerican">Go</a>
+                                <a href="javascript:;"
+                                   class="weui-btn weui-btn_mini weui-btn_warn"
+                                   @click.stop="addPoints('messenger_share')" v-else>Go</a>
+                            </div>
+                        </div>
+                        <div class="jackson-flex-row jackson-flex-y jackson-flex-sb rewards-methods-item" v-show="task === 'inviteFriends'">
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-l">
+                                <i class="iconfont invite-friends">&#xea6a;</i>
+                                <div>
+                                    <p>Share freebies with friends</p>
+                                    <p>RP: {{inviteFriendsPoints}}</p>
+                                </div>
+                            </div>
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-r">
+                                <a href="javascript:;"
+                                   class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled"
+                                   v-if="!isAmerican">Go</a>
+                                <a :href="sharePageURL"
+                                   class="weui-btn weui-btn_mini weui-btn_warn" v-else>Go</a>
+                            </div>
+                        </div>
+                        <div class="jackson-flex-row jackson-flex-y jackson-flex-sb rewards-methods-item" v-if="task === 'getFreeItems'">
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-l">
+                                <i class="iconfont tahoevine"></i>
+                                <div>
+                                    <p>Get free items without earning points</p>
+                                </div>
+                            </div>
+                            <div class="jackson-flex-row jackson-flex-y rewards-methods-item-r">
+                                <a :href="getFreeItemsWithoutPoints"
+                                   class="weui-btn weui-btn_mini weui-btn_warn weui-btn_disabled"
+                                   v-if="!isAmerican">Go</a>
+                                <a :href="getFreeItemsWithoutPoints"
+                                   class="weui-btn weui-btn_mini weui-btn_warn" v-else>Go</a>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="weui-dialog__ft jackson-center">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click.stop="displayParentDialog()">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+    Vue.component('rewards-dialog', {
+        template: '#rewards-dialog-template',
+        store: MOUNTGAO.DATA.store,
+        props: {
+            isDisplay: {
+                type: Boolean,
+                required: false,
+                default: false
+            },
+            title:{
+                type: String,
+                required: false,
+                default: "Earn points"
+            },
+            name: {
+                type: Number,
+                required: true,
+                default: ""
+            },
+            requestSwitch: {
+                type: Boolean,
+                required: false,
+                default: true
+            }
+        },
+        data: function () {
+            return {
+                isLoading: false,
+                facebookSharePoints: "25"?"25":20,
+                messengerSharePoints: "25"?"25":20,
+                inviteFriendsPoints: "50"?"50":25,
+                tasksList: [ "fb", "fbMessenger", "inviteFriends" ]
+            }
+        },
+        methods:{
+            displayParentDialog: function () {
+                var _this = this,
+                    dialogName = _this.name;
+                dialogName && _this.$emit("display-dialog",dialogName);
+            },
+            openWithApp: function (appLink,webURL) {
+                var _this = this,
+                    openTime = Date.now(),
+                    isMobile = _this.isMobile;
+
+                if(isMobile){
+                    window.location.href = appLink;
+                }else{
+                    window.open(webURL);
+                }
+
+                var timer = setTimeout(function () {
+                    if (Date.now() - openTime < 2200) {
+                        window.location.href = webURL;
+                    }else{
+                        clearTimeout(timer);
+                    }
+                }, 2000);
+            },
+            handleShare: function(task){
+                var _this = this;
+
+                    switch (task){
+                        case "facebook_share":
+                            return _this.openWithApp(_this.fbPageAppLink,_this.fbPageWebURL);
+                        case "messenger_share":
+                            return _this.openWithApp(_this.messengerAppLink,_this.messengerWebURL);
+                        default:
+                            return window.location.href = _this.sharePageURL;
+                    }
+            },
+            handleTasksList: function(task){
+                var _this = this,
+                    tasksList = _this.tasksList ? _this.tasksList : [];
+
+                switch (task) {
+                    case "fb":
+                    case "fbMessenger":
+                        tasksList.push(tasksList.splice(tasksList.indexOf(task),1)[0]);
+                        break;
+                    case "inviteFriends":
+                        tasksList.splice(tasksList.indexOf(task) + 1, 0, "getFreeItems");
+                        break;
+                    default:
+                        throw new Error("handleTasksList task error");
+                }
+                _this.tasksList = tasksList;
+            },
+            getBuyerInfo: function () {
+                var _this = this;
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Buyer/getBuyer",
+                    params:{
+
+                    }
+                }).then(function (res) {
+                    _this.isLoading = false;
+                    var resData = res.data,
+                        resMsg = resData.msg;
+
+                    switch (resData.status){
+                        case 200:
+                            _this.$store.commit("setBuyer",resData.data);
+                            break;
+                        case 403://non login
+                            var loginURL = resData.data.url;
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            loginURL && setTimeout(function () {
+                                window.location.href = loginURL;
+                            },1000);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    _this.$store.commit('setBuyerTimeoutID',
+                        setTimeout(function () {
+                            _this.$store.commit('setBuyerTimeoutID',0);
+                        },_this.buyerDelayGlobal));
+
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"toast",msg:err});
+
+                })
+            },
+            addPoints: function (task) {
+                var _this = this;
+
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Buyer/addPoints",
+                    params:{
+                        task: task
+                    }
+                }).then(function (res) {
+                    _this.isLoading = false;
+                    var resData = res.data,
+                        resMsg = resData.msg,
+                        newBuyer = resData.data.buyer;
+
+                    switch (resData.status){
+                        case 200:
+                            _this.handleShare(task);
+                            newBuyer && _this.$store.commit("setBuyer",newBuyer);
+                            break;
+                        case 403://non login
+                            var loginURL = resData.data.url;
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            loginURL && setTimeout(function () {
+                                window.location.href = loginURL;
+                            },1000);
+                            break;
+                        default:
+                            _this.handleShare(task);
+                            break;
+                    }
+
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    _this.handleShare(task);
+                })
+
+            }
+        },
+        computed: {
+            buyerIDGlobal: function () {
+                return this.$store.state.buyerID;
+            },
+            buyerGlobal: function () {
+                return this.$store.state.buyer;
+            },
+            buyerTimeoutIDGlobal: function () {
+                return this.$store.state.buyerTimeoutID;
+            },
+            buyerDelayGlobal: function (){
+                return this.$store.state.buyerDelay;
+            },
+            isFBShareDone: function(){
+                return !+this.buyerGlobal.facebook_share === 1;
+            },
+            isMessengerShareDone: function(){
+                return +this.buyerGlobal.messenger_share === 1;
+            },
+            isMobile: function () {
+                return this.$store.state.NUA.isMobile;
+            },
+            sharePageURL: function () {
+                return "/Share/share?referrer_id=" + this.buyerIDGlobal;
+            },
+            getFreeItemsWithoutPoints: function () {
+                var utmMedium = "&utm_medium=" + this.buyerIDGlobal,
+                    link = "https://hundsonvine.com/index/landingpage?utm_source=fullyrebate"
+                        ? "https://hundsonvine.com/index/landingpage?utm_source=fullyrebate"
+                        : "https://hundsonvine.com/index/landingpage?utm_source=fullyrebate";
+
+                return link + utmMedium;
+            },
+            fbPageAppLink: function () {
+                return "fb://page/605024596577132"
+                    ? "fb://page/605024596577132"
+                    : "fb://profile/605024596577132";
+            },
+            fbPageWebURL: function () {
+                return "https://www.facebook.com/Fully-rebate-605024596577132/"
+                    ? "https://www.facebook.com/Fully-rebate-605024596577132/"
+                    : "https://www.facebook.com/Fully-rebate-605024596577132/";
+            },
+            messengerAppLink: function () {
+                return "fb-messenger://m.me/605024596577132"
+                    ? "fb-messenger://m.me/605024596577132"
+                    : "fb-messenger://m.me/605024596577132";
+            },
+            messengerWebURL: function () {
+                return "https://m.me/605024596577132"
+                    ? "https://m.me/605024596577132"
+                    : "https://m.me/605024596577132";
+            },
+            isInviteNumEnough: function () {
+                return this.buyerGlobal.invite_num >= 0;
+            },
+            isAmerican: function () {
+                return this.buyerGlobal.country_code === "US";
+            }
+        },
+        watch: {
+            isDisplay: function(n,o) {
+                var _this = this;
+                _this.requestSwitch && !_this.buyerTimeoutIDGlobal && n && (_this.isFBShareDone || _this.isMessengerShareDone || !_this.isInviteNumEnough) && _this.getBuyerInfo();
+            },
+            isFBShareDone: function (n) {
+                n && this.handleTasksList("fb");
+            },
+            isMessengerShareDone: function (n) {
+                n && this.handleTasksList("fbMessenger");
+            },
+            isInviteNumEnough: function (n) {
+                n && this.handleTasksList("inviteFriends");
+            }
+        },
+        created:function () {
+
+        }
+    })
+
+</script>
+<script type="text/x-template" id="get-free-item-template">
+    <div style="display: block;width: 100%;height: 100%;">
+        <div style="display: block;width: 100%;height: 100%;" @click.stop="getFreeItem()">
+            <slot></slot>
+        </div>
+
+        <div class="js_dialog" v-if="isRedeemConfirmDialogShow">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog fullyRebate-dialog">
+                <div class="weui-dialog__hd">Redeem {{orderPoints}} points for this product</div>
+                <div class="weui-dialog__bd">You have: <strong class="jackson-cor-red">{{buyerGlobal.points}}</strong> points</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click.stop="isRedeemConfirmDialogShow = !isRedeemConfirmDialogShow">Cancel</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary jackson-cor-red" @click.stop="confirmRequestGoods()">Confirm</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="js_dialog" v-if="isEarnPointConfirmDialogShow">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog fullyRebate-dialog">
+                <div class="weui-dialog__hd">Need {{orderPoints}} points for this product</div>
+                <div class="weui-dialog__bd">You have: <strong class="jackson-cor-red">{{buyerGlobal.points}}</strong> points</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click.stop="isEarnPointConfirmDialogShow = !isEarnPointConfirmDialogShow">Cancel</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary jackson-cor-red" @click.stop="confirmEarnPoints()">Earn points</a>
+                </div>
+            </div>
+        </div>
+
+        <rewards-dialog
+                v-on:display-dialog="displayDialog"
+                :is-display="isEarnPointDialogShow"
+                title="Earn points"
+                name="isEarnPointDialogShow"
+                :request-switch="false">
+        </rewards-dialog>
+
+    </div>
+</script>
+
+<script>
+
+    Vue.component('get-free-item', {
+        template: '#get-free-item-template',
+        store: MOUNTGAO.DATA.store,
+        props: {
+            orderId: {
+                type: Number,
+                required: false,
+                default: 0
+            },
+            orderPoints: {
+                type: Number,
+                required: false,
+                default: "50" ? +"50" : 50
+            },
+            isList: {
+                type: Boolean,
+                required: false,
+                default: false,
+            }
+
+        },
+        data: function () {
+            return {
+                isLoading: false,
+                isRedeemConfirmDialogShow: false,
+                isEarnPointConfirmDialogShow: false,
+                isEarnPointDialogShow: false,
+            }
+        },
+        methods:{
+            getFreeItem:function(){
+                var _this = this;
+
+                if(_this.buyerIDGlobal){
+                    if(!_this.isBuyerPointsEnough && !_this.buyerTimeoutIDGlobal){
+                        _this.getBuyerInfo();
+                    }else{
+                        _this.isRedeemConfirmDialogShow =  _this.isBuyerPointsEnough;
+                        _this.isEarnPointConfirmDialogShow = ! _this.isBuyerPointsEnough;
+                    }
+
+                }else{
+                    MOUNTGAO.displayTips({type:"toast",msg:"Please log in"});
+                    setTimeout(function () {
+                        window.location.href = _this.loginURLGlobal;
+                    },2000)
+                }
+            },
+            confirmRequestGoods: function(){
+                var _this = this;
+                _this.isRedeemConfirmDialogShow = false;
+                _this.requestGoods();
+            },
+            confirmEarnPoints: function(){
+                var _this = this;
+                _this.isEarnPointConfirmDialogShow = false;
+                _this.isEarnPointDialogShow = true;
+            },
+            displayDialog: function (name) {
+                var _this = this;
+                _this[name] = !_this[name];
+            },
+            getBuyerInfo: function () {
+                var _this = this;
+
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+
+                MOUNTGAO.displayTips({type:"loading",msg: "loading"});
+
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Buyer/getBuyer",
+                    params:{
+
+                    }
+                }).then(function (res) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    var resData = res.data,
+                        resMsg = resData.msg;
+
+                    switch (resData.status){
+                        case 200:
+                            _this.$store.commit("setBuyer",resData.data);
+                            break;
+                        case 403://non login
+                            var loginURL = resData.data.url;
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            loginURL && setTimeout(function () {
+                                window.location.href = loginURL;
+                            },1000);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    _this.$store.commit('setBuyerTimeoutID',
+                        setTimeout(function () {
+                            _this.$store.commit('setBuyerTimeoutID',0);
+                        },_this.buyerDelayGlobal));
+
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    MOUNTGAO.displayTips({type:"toast",msg:err});
+                }).then(function () {
+                    _this.isRedeemConfirmDialogShow = _this.isBuyerPointsEnough;
+                    _this.isEarnPointConfirmDialogShow = !_this.isBuyerPointsEnough;
+                })
+            },
+            requestGoods: function(){
+                var _this = this,
+                    orderId = _this.orderId;
+
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+
+                MOUNTGAO.displayTips({type:"loading",msg: "loading"});
+
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Manage/request",
+                    params:{
+                        order_id: orderId
+                    }
+                }).then(function (res) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    var resData = res.data,
+                        resMsg = resData.msg;
+                    switch (resData.status){
+                        case 200://success
+                        case 405://already
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            var requestID = resData.data.request_id;
+                            requestID && setTimeout(function () {
+                                window.location.href = "/Manage/requestDetail?request_id=" + requestID;
+                            },1000);
+                            break;
+                        case 403://non login
+                            var loginURL = resData.data.url;
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            loginURL && setTimeout(function () {
+                                window.location.href = loginURL;
+                            },1000);
+                            break;
+                        default:
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            break;
+                    }
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    MOUNTGAO.displayTips({type:"toast",msg:err});
+                })
+            },
+
+        },
+        computed:{
+            buyerIDGlobal: function () {
+                return this.$store.state.buyerID;
+            },
+            buyerGlobal: function () {
+                return this.$store.state.buyer;
+            },
+            buyerTimeoutIDGlobal: function () {
+                return this.$store.state.buyerTimeoutID;
+            },
+            buyerDelayGlobal: function (){
+                return this.$store.state.buyerDelay;
+            },
+            loginURLGlobal: function () {
+                return this.$store.state.loginURL;
+            },
+            isBuyerPointsEnough: function() {
+                var _this = this;
+                if(JSON.stringify(_this.buyerGlobal) === "{}"){
+                    return false;
+                }
+                return _this.buyerGlobal.points >= _this.orderPoints;
+            }
+        },
+        created:function () {
+
+        }
+    })
+
+</script>
+<script type="text/x-template" id="free-item-list-template">
+    <div v-if="isFreeItemListShow">
+        <div class="packWill-group-body packWill-order-recommend-list" v-if="isRecommendListShow">
+            <div class="jackson-flex-row jackson-flex-ct packWill-recommend-head">
+                <i class="iconfont">&#xe69a;</i>Select products
+            </div>
+            <div class="packWill-recommend-wrapper">
+                <div class="packWill-recommend-base-list-wrapper">
+                    <div class="packWill-recommend-item" v-for="(goods,index) in goodsList">
+                        <div class="packWill-recommend-item-content">
+                            <a class="packWill-recommend-item-img jackson-flex-row jackson-flex-ct" :href="'/Goods/goods?order_id=' + goods.orderid">
+                                <img v-lazy="goods.smallphoto">
+                            </a>
+                            <div class="packWill-recommend-item-info">
+                                <div class="packWill-recommend-item-name-block">
+                                    <p class="packWill-recommend-item-name" v-html="goods.listingname"></p>
+                                </div>
+                                <div class="jackson-flex-row jackson-flex-y jackson-flex-sb packWill-recommend-item-price-block">
+                                    <p class="packWill-recommend-item-price"><i>$</i>{{goods.price}}</p>
+                                    <div>
+                                        <get-free-item ref="get-free-item"
+                                                       :is-list="true"
+                                                       :order-id="goods.orderid">
+                                            <a href="javascript:;" class="weui-btn weui-btn_warn weui-btn_mini free-goods-action-get">
+                                                Get it free
+                                            </a>
+                                        </get-free-item>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template v-else>
+            <div class="free-goods-lists" v-if="isGoodsListShow && 0">
+                <div class="jackson-flex-row free-goods-item" v-for="(goods,index) in goodsList">
+                    <a :href="'/Goods/goods?order_id=' + goods.orderid" class="jackson-flex-row jackson-flex-ct free-goods-item-l">
+                        <img v-lazy="goods.smallphoto" alt="">
+                    </a>
+                    <div class="jackson-flex-1 jackson-flex-col jackson-flex-sb free-goods-item-r">
+                        <a :href="'/Goods/goods?order_id=' + goods.orderid" class="free-goods-name" v-html="goods.listingname"></a>
+                        <div class="jackson-flex-row jackson-flex-sb">
+                            <div class="jackson-flex-row jackson-flex-y free-goods-price"><span>$</span><span>{{goods.price}}</span></div>
+                            <div>
+                                <get-free-item ref="get-free-item"
+                                               :is-list="true"
+                                               :order-id="goods.orderid">
+                                    <a href="javascript:;" class="weui-btn weui-btn_warn free-goods-action-get">
+                                        Get it free
+                                    </a>
+                                </get-free-item>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="packWill-recommend-wrapper packWill-group-body" v-if="isGoodsListShow">
+                <div class="packWill-recommend-base-list-wrapper">
+                    <div class="packWill-recommend-item" v-for="(goods,index) in goodsList">
+                        <div class="packWill-recommend-item-content">
+                            <a class="packWill-recommend-item-img jackson-flex-row jackson-flex-ct" :href="'/Goods/goods?order_id=' + goods.orderid">
+                                <img v-lazy="goods.smallphoto">
+                            </a>
+                            <div class="packWill-recommend-item-info">
+                                <div class="packWill-recommend-item-name-block">
+                                    <p class="packWill-recommend-item-name" v-html="goods.listingname"></p>
+                                </div>
+                                <div class="jackson-flex-row jackson-flex-y jackson-flex-sb packWill-recommend-item-price-block">
+                                    <p class="packWill-recommend-item-price"><i>$</i>{{goods.price}}</p>
+                                    <div>
+                                        <get-free-item ref="get-free-item"
+                                                       :is-list="true"
+                                                       :order-id="goods.orderid">
+                                            <a href="javascript:;" class="weui-btn weui-btn_warn weui-btn_mini free-goods-action-get">
+                                                Get it free
+                                            </a>
+                                        </get-free-item>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </template>
+
+        <div class="jackson-flex-col jackson-flex-ct packWill-null-box" v-if="isNoDataShow">
+            <i class="iconfont">&#xe736;</i>
+            <p>No data</p>
+        </div>
+
+        <div class="weui-loadmore" v-show="isLoading">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">loading</span>
+        </div>
+
+        <div class="weui-loadmore weui-loadmore_line" v-if="isTheEndShow">
+            <span class="weui-loadmore__tips">The End</span>
+        </div>
+        <div class="packWill-back-to-top" title="back to the top" v-show="isBackToTopShow" @click.stop="scrollToTop()">
+            <i class="iconfont">&#xea65;</i>
+        </div>
+    </div>
+</script>
+
+<script>
+    Vue.component('free-item-list', {
+        template: '#free-item-list-template',
+        props: {
+            listType: {
+                type: String,
+                required: false,
+                default: "home"
+            },
+            isDisplay: {
+                type: Boolean,
+                required: false,
+                default: true
+            }
+
+        },
+        data: function () {
+            return {
+                goodsList: [],
+                pageNum: 1,
+                pageTotal: 1,
+                pageSize: 10,
+                maxPageNum: 100,
+                isNoMoreData: false,
+                isLoading: false,
+                isBackToTopShow: false,
+                isInit: false,
+                container: null
+            }
+        },
+        methods:{
+            scrollToTop:function(){
+                var container = document.querySelector("#jackson-tab-panel");
+                container.scrollTop = 0;
+                this.isBackToTopShow = false;
+            },
+            scrollLoad:function () {
+                var container = document.querySelector("#jackson-tab-panel"),
+                    scrollTop = container.scrollTop,
+                    scrollHeight = container.scrollHeight,
+                    containerHeight = container.offsetHeight,
+                    _this = this;
+
+                _this.isBackToTopShow = (scrollTop >= 160);
+
+                if(_this.isToEnd) return;
+
+                if (!_this.isLoading && scrollTop && scrollTop + containerHeight >= scrollHeight - 100) {
+                    if (_this.pageNum < _this.maxPageNum) {
+                        _this.loadGoods(_this.pageNum);
+                    }else{
+                        return false;
+                    }
+                }
+            },
+            loadGoods:function () {
+                var _this = this;
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Index/Index",
+                    params:{
+                        page: _this.pageNum,
+                        page_size: _this.pageSize,
+                    }
+                }).then(function (res) {
+                    _this.isLoading = false;
+                    var resData = res.data;
+                    if(resData.status === 200 && resData.data && resData.data["product_list"] && resData.data["product_list"].length){
+                        _this.goodsList = _this.goodsList.concat(resData.data["product_list"]);
+                        if(resData.data["product_list"].length < _this.pageSize){
+                            _this.isNoMoreData = true;
+                        }else{
+                            _this.pageNum ++;
+                        }
+
+                        var pageTotal = resData.data["page_total"];
+                        pageTotal && (_this.pageTotal = pageTotal);
+
+                    }else{
+                        _this.isNoMoreData = true;
+                    }
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    _this.isNoMoreData = true;
+                    MOUNTGAO.displayTips({type:"toast",msg:err});
+
+                }).then(function () {
+                    _this.isInit = false;
+                })
+            },
+        },
+        computed:{
+            isToEnd:function () {
+                var _this = this;
+                return _this.isNoMoreData || _this.pageNum > _this.maxPageNum || _this.pageNum > _this.pageTotal;
+            },
+            isGoodsListShow: function(){
+                return this.goodsList.length > 0;
+            },
+            isNoDataShow: function(){
+                return this.goodsList.length === 0 && !this.isLoading;
+            },
+            isTheEndShow: function(){
+                return this.goodsList.length > 0 && this.isToEnd && this.pageNum > 1;
+            },
+            isRecommendListShow: function () {
+                return this.listType === "recommend";
+            },
+            isFreeItemListShow: function () {
+                var _this = this;
+                return (!_this.isRecommendListShow && _this.isDisplay) ||
+                    (_this.isRecommendListShow && _this.isDisplay && _this.isGoodsListShow && !_this.isInit);
+            }
+        },
+        created:function () {
+            !this.isRecommendListShow && this.loadGoods();
+        }
+    })
+
+</script>
+<script type="text/x-template" id="lucky-box-template">
+    <div>
+
+        <div class="jackson-modal" v-if="isLuckyBoxShow" @click.stop="openLuckyBox">
+            <div class="jackson-modal-bg"></div>
+            <div class="jackson-modal-dialog">
+                <a href="javascript:;" class="iconfont jackson-modal-dialog-close" @click.stop="openLuckyBox" style="font-size: 30px;">&#xe662;</a>
+                <div class="jackson-center">
+                    <img src="/Public/images/LUCKYBOX-revised.png" alt="" style="max-width: 100%;">
+                </div>
+            </div>
+        </div>
+
+        <div class="jackson-modal" v-if="isCongratsDialogShow">
+            <div class="jackson-modal-bg"></div>
+            <div class="jackson-modal-dialog">
+                <a href="javascript:;" class="iconfont jackson-modal-dialog-close" @click.stop="closeCongratsDialog()">&#xe662;</a>
+                <div class="jackson-modal-dialog-content">
+                    <div class="jackson-modal-dialog-header-congrats">Congratulations</div>
+                    <div class="jackson-modal-dialog-body jackson-center">
+                        <p>You have earned <strong class="jackson-cor-red">{{buyerGlobal.lucky_points}}</strong> points!</p>
+                        <p>You can now redeem any products you like with points!</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jackson-modal packWill-cut-congrats-dialog" style="bottom: 60px;z-index: 498;" v-if="isGuideDialogShow" >
+            <div class="jackson-modal-bg"></div>
+            <img class="cut-share-guide-arrow animate-arrow bottom"
+                 src="/Public/images/group-share-arrow.png">
+            <div class="jackson-modal-dialog">
+                <a href="javascript:;" class="iconfont jackson-modal-dialog-close" @click.stop="isGuideDialogShow = !isGuideDialogShow">&#xe662;</a>
+                <div class="jackson-modal-dialog-content">
+                    <div class="jackson-modal-dialog-header-tips">Tips</div>
+                    <div class="jackson-modal-dialog-body">
+                        <p class="jackson-cor-red">Home: You can find all items here.<br>My List: You can submit photos and IDs here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</script>
+
+<script>
+    Vue.component('lucky-box', {
+        template: '#lucky-box-template',
+        store: MOUNTGAO.DATA.store,
+        props: {
+
+        },
+        data: function () {
+            return {
+                isLoading: false,
+                isLuckyBoxShow: false,
+                isCongratsDialogShow: false,
+                isGuideDialogShow: false
+            }
+        },
+        methods:{
+            closeCongratsDialog: function(){
+                var _this = this;
+                _this.isCongratsDialogShow = !_this.isCongratsDialogShow;
+                _this.isGuideDialogShow = !_this.isGuideDialogShow;
+            },
+            openLuckyBox:function () {
+                var _this = this;
+                if(_this.isLoading) return;
+
+                _this.isLoading = true;
+                _this.isLuckyBoxShow = false;
+
+                MOUNTGAO.displayTips({type:"loading",msg: "loading"});
+
+                MOUNTGAO.axiosAJAX({
+                    method:"post",
+                    url:"/Buyer/addPoints",
+                    params:{
+                        task: "open_box"
+                    }
+                }).then(function (res) {
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    _this.isLoading = false;
+                    var resData = res.data,
+                        resMsg = resData.msg,
+                        newBuyer = resData.data.buyer;
+
+                    switch (resData.status){
+                        case 200:
+                            if(!newBuyer) return;
+                            _this.$store.commit("setBuyer",newBuyer);
+                            _this.isCongratsDialogShow = true;
+                            break;
+                        case 403://non login
+                            var loginURL = resData.data.url;
+                            resMsg && MOUNTGAO.displayTips({type:"toast",msg: resMsg});
+                            loginURL && setTimeout(function () {
+                                window.location.href = loginURL;
+                            },1000);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    newBuyer && _this.$store.commit('setBuyerTimeoutID',
+                        setTimeout(function () {
+                            _this.$store.commit('setBuyerTimeoutID',0);
+                        },_this.buyerDelayGlobal));
+
+                }).catch(function (err) {
+                    _this.isLoading = false;
+                    MOUNTGAO.displayTips({type:"hideLoading"});
+                    MOUNTGAO.displayTips({type:"toast",msg:err});
+                })
+
+
+            }
+        },
+        computed:{
+            buyerIDGlobal: function () {
+                return this.$store.state.buyerID;
+            },
+            buyerGlobal: function () {
+                return this.$store.state.buyer;
+            },
+            buyerTimeoutIDGlobal: function () {
+                return this.$store.state.buyerTimeoutID;
+            },
+            buyerDelayGlobal: function (){
+                return this.$store.state.buyerDelay;
+            },
+            loginURLGlobal: function () {
+                return this.$store.state.loginURL;
+            },
+            sharePageURL: function () {
+                return "/Share/share?referrer_id=" + this.buyerIDGlobal;
+            },
+        },
+        created:function () {
+            var _this = this,
+                luckyPoints = "";
+            _this.isLuckyBoxShow = luckyPoints && +luckyPoints === 0;
+
+        }
+    })
+</script>
+<script type="text/x-template" id="tabbar-bottom-template">
+    <div class="weui-tabbar jackson-flex-y jackson-tabbar">
+        <a :href="homeLink" class="weui-tabbar__item jackson-tabbar-item" :class="[{'jackson-tabbar-item-on':isHome}]">
+            <i class="iconfont jackson-tabbar-icon">&#xea66;</i>
+            <span class="jackson-tabbar-label">Home</span>
+        </a>
+        <a :href="rightLink" class="weui-tabbar__item jackson-tabbar-item" :class="[{'jackson-tabbar-item-on':!isHome}]">
+            <i class="iconfont jackson-tabbar-icon">&#xe601;</i>
+            <span class="jackson-tabbar-label">My list</span>
+        </a>
+    </div>
+</script>
+
+<script>
+    Vue.component('tabbar-bottom', {
+        template: '#tabbar-bottom-template',
+        props: {
+            pageCurr: {
+                type: String,
+                required: true,
+                default: "Home"
+            }
+        },
+        computed:{
+            isHome: function () {
+                return this.pageCurr === "Home";
+            },
+            homeLink: function () {
+                return this.isHome?'javascript:;':'/';
+            },
+            rightLink: function () {
+                return this.isHome?'/Manage/myList':'javascript:;';
+            }
+
+        }
+    })
+</script>
+
+<script>
+    new Vue({
+        el:"#box",
+        store: MOUNTGAO.DATA.store,
+        data:{
+            pageCurr: "Home",
+            buyerIDCurr: "",
+            loginURLCurr: "",
+            orderIDCurr: "",
+            isRulesDialogShow: false
+        },
+        methods:{
+            scrollLoad:function () {
+                return this.freeItemListTemplateScrollLoad();
+            },
+            getFreeItemTemplateClick:function () {
+                var _this = this,
+                    refsName = "get-free-item-sp",
+                    refs = _this.$refs[refsName];
+                refs && refs.getFreeItem();
+            },
+
+        },
+        computed:{
+            freeItemListTemplateScrollLoad: function () {
+                var _this = this,
+                    refsName = "free-item-list",
+                    refs = _this.$refs[refsName];
+                return refs && refs.scrollLoad;
+            }
+        },
+        mounted: function () {
+            if(!localStorage) return;
+            var _this = this,
+                orderIDCurr = _this.orderIDCurr,
+                homeOrderID = localStorage.getItem("home_order_id");
+
+            if(homeOrderID !== orderIDCurr){
+                setTimeout(function () {
+                    _this.getFreeItemTemplateClick();
+                    localStorage.setItem("home_order_id",orderIDCurr);
+                },500)
+            }
+        },
+        created:function () {
+
+        }
+
+    })
+</script>
+
+
+</body>
+</html>
