@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html data-path="/" lang="en">
+<head>
+
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Amazon Free Samples">
+<meta name="keywords" content="coupon codes, deals, promo codes, printable coupons">
+<title>Amazon Free Samples</title>
+<link rel="dns-prefetch" href="//hundsonvine.com">
+<link rel="shortcut icon" sizes="57x57" href="/Public/images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" href="/Public/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="/Public/images/favicon.ico">
+<link rel="stylesheet" href="/Public/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Public/css/animate.min.css"/>
+<link rel="stylesheet" href="/Public/css/main.css?v20190829">
+<link rel="stylesheet" href="/Public/css/index.css?v20190829">
+<!--[if lte IE 9]>
+<script>window.location.href = "/Error/upgrade";</script>
+<![endif]-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-75765960-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', "UA-75765960-4");
+</script><!-- Global site tag (gtag.js) - Google Ads: 955903346 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-955903346"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-955903346');
+</script>
+
+
+
+</head>
+<body>
+<div id="box" class="MountGao-box" v-cloak>
+
+    <header-common></header-common>
+
+    <div id="mainContent" class="pc-user-center">
+        <div class="contentContainer container mainContent pr mt100">
+            <div class="loginSignupContent">
+                <div class="loginSignupHeader">Account</div>
+                <!--userCenter-->
+                <form class="p15" id="formChangePassword">
+                    <fieldset>
+                        <legend class="hide">userCenter</legend>
+                        <div class="pb20" id="errorMsg"></div>
+                        <div class="submit-edit clearfix pb20">
+                            <label class="submit-edit-header vm" for="account">E-mail:</label>
+                            <span class="submit-content pr">
+                                <input class="p5 bor-r2 bor-1gray"
+                                       name="buyerEmail" id="account" type="email" maxlength="32"
+                                       :value="buyerEmail" placeholder="your account" readonly></span>
+                        </div>
+                        <div class="submit-edit clearfix pb20">
+                            <label class="submit-edit-header vm" for="profileURL">Profile URL:</label>
+                            <span class="submit-content pr">
+                                <textarea class="p5 bor-r2 bor-1gray fullwidth"
+                                          name="profileURL" id="profileURL" rows="4"
+                                          placeholder="your profile url" readonly>{{profileURL}}
+                                </textarea></span>
+                        </div>
+                        <div class="submit-edit clearfix pb20">
+                            <label class="submit-edit-header vm" for="paypalAccount">PayPal Account:</label>
+                            <span class="submit-content pr">
+                                <input class="p5 bor-r2 bor-1gray"
+                                       name="paypalAccount" id="paypalAccount"
+                                       type="email" maxlength="32"  :value="payPalAccount"
+                                       placeholder="your paypal account" readonly></span>
+                        </div>
+                        <div class="text-center">
+                            <a href="/Buyer/logout" class="purpleButton mt15">Sign Out</a>
+                            <a href="/Buyer/changeBuyerInfo" class="purpleButton ml15 mt15">Change Password/PayPal</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-user-center">
+        <div class="mobile-form-title">ACCOUNT</div>
+        <div class="mobile-form mb30">
+            <a class="mobile-form-item" href="/Buyer/changeBuyerInfo">
+                <div class="mobile-form-bd">
+                    <p>Change Password</p>
+                </div>
+                <div class="mobile-form-ft">
+                    <i class="iconfont">&#xe7c8;</i>
+                </div>
+            </a>
+            <a class="mobile-form-item" href="/Buyer/changeBuyerInfo?type=PayPal">
+                <div class="mobile-form-bd">
+                    <p>Change PayPal</p>
+                </div>
+                <div class="mobile-form-ft">
+                    <i class="iconfont">&#xe7c8;</i>
+                </div>
+            </a>
+            <a class="mobile-form-item" href="/Buyer/logout">
+                <div class="mobile-form-bd">
+                    <p>Sign out</p>
+                </div>
+                <div class="mobile-form-ft">
+                    <i class="iconfont">&#xe7c8;</i>
+                </div>
+            </a>
+        </div>
+        <div class="mobile-form-title">PROFILE</div>
+        <div class="mobile-form">
+            <div class="mobile-form-item">
+                <div>
+                    <div class="mobile-form-label">Email:</div>
+                </div>
+                <div>
+                    <input type="text" class="mobile-form-input" :value="buyerEmail" placeholder="your account" readonly>
+                </div>
+            </div>
+            <div class="mobile-form-item">
+                <div>
+                    <div class="mobile-form-label">PayPal Account:</div>
+                </div>
+                <div>
+                    <input type="text" class="mobile-form-input" :value="payPalAccount" placeholder="your account" readonly>
+                </div>
+            </div>
+            <div class="mobile-form-item">
+                <div>
+                    <div>Profile URL:</div>
+                    <textarea name="" id="" cols="40" rows="3"
+                              class="mobile-form-textarea"
+                              placeholder="your profile url" readonly>{{profileURL}}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-mobile">
+    <div class="footer-mobile-item">
+        <a href="/Index/help">Help</a>
+    </div>
+    <div class="footer-mobile-point"></div>
+    <div class="footer-mobile-item">
+        <a href="/Index/contact">Contact Us</a>
+    </div>
+    <div class="footer-mobile-point"></div>
+    <div class="footer-mobile-item">
+        <a href="/Index/guide">Guide</a>
+    </div>
+</div>
+
+</div>
+
+<script src="/Public/js/vue.min.js"></script>
+<script src="/Public/js/axios_promise.js"></script>
+<script src="/Public/js/axios.min.js"></script>
+<script src="/Public/js/js.cookie.min.js"></script>
+<script src="/Public/js/common.js?v20190816"></script>
+<script src="/Public/js/vuex.min.js"></script>
+<script>
+    MOUNTGAO.DATA.store =  new Vuex.Store({
+        state: {
+            count: 0,
+            loginURL: "/Buyer/signin",
+            currency: "$",
+            waitReviewNum: +"0",
+            wishListNum: +"8",
+            gaMeasurementID: "UA-75765960-4",
+            reviewSubmitHourLimit: "48",
+            reviewSubmitDayLimit: "27",
+            vipMinPrice: "50",
+            isBuyerNotApplied: "",
+            isBuyerSubmitted: "",
+            fbHomePageURL: {
+                app: "fb://page/112094206802229",
+                web: "https://www.facebook.com/Hundsonvine"
+            }
+        },
+        getters: {
+            messengerSharerURL: function (state) {
+
+            }
+        },
+        mutations: {
+            increment:function (state) {
+                state.count++
+            },
+            updateWaitReviewNum: function (state, type) {
+                switch (type){
+                    case "+":
+                        return state.waitReviewNum++;
+                    case "-":
+                        if (state.waitReviewNum <= 0) return;
+                        return state.waitReviewNum--;
+                    default:
+                        throw new Error("updateWaitReviewNum type error!!!");
+                }
+            },
+            updateWishListNum: function (state, type) {
+                switch (type){
+                    case "+":
+                        return state.wishListNum++;
+                    case "-":
+                        if (state.wishListNum <= 0) return;
+                        return state.wishListNum--;
+                    default:
+                        throw new Error("updateWishListNum type error!!!");
+                }
+            },
+            openWithAmazon: function (state, order) {
+                var asin = order.asin,
+                    link = order.link,
+                    AMZ_PURCHASE_LINK_WEB = "https://www.amazon.com/dp/",
+                    AMZ_PURCHASE_LINK_APP = "com.amazon.mobile.shopping.web://www.amazon.com/dp/",
+                    AMZ_DOMAIN = "amazon.com",
+                    webLinkTag = "tag=ddddddd-20",
+                    separator = (link && link.indexOf('?') !== -1) ? "&" : "?",
+                    webPurchaseLink = link ? link : AMZ_PURCHASE_LINK_WEB + asin,
+                    appPurchaseLink = AMZ_PURCHASE_LINK_APP + asin;
+
+                if (webPurchaseLink.indexOf(AMZ_DOMAIN) !== -1) {
+                    webPurchaseLink += (separator + webLinkTag);
+                }
+
+                function openWithApp(appLink, webURL) {
+                    var timeout = 2000,
+                        timeDelay = 200,
+                        openTime = Date.now(),
+                        browser = MOUNTGAO.getBrowser(),
+                        timer;
+
+                    if(browser.isMobile){
+                        window.location.href = appLink;
+                        timer = setTimeout(function () {
+                            if (Date.now() - openTime < timeout + timeDelay) {
+                                window.open(webURL);
+                            }else{
+                                clearTimeout(timer);
+                            }
+                        }, timeout);
+                    }else{
+                        window.open(webURL);
+                    }
+                }
+
+                return openWithApp(appPurchaseLink, webPurchaseLink);
+            },
+            traceByGtag: function (state, addr) {
+                if (typeof gtag === "undefined" || !(gtag instanceof Function)) return;
+
+                gtag("config", state.gaMeasurementID, {"page_path": addr});
+            },
+            gtagReportConversion: function (state, type, url) {
+                var codeAW = "AW-955903346",
+                    requestSendTo = codeAW + "/JeBECL2TuaYBEPLa58cD",
+                    submitSendTo = codeAW + "/ydR0CJnrwaYBEPLa58cD",
+                    orderIDSendTo = codeAW + "/jzZnCNnJragBEPLa58cD";
+
+                if (typeof gtag === "undefined" || !(gtag instanceof Function)) return;
+
+                function report(sendTo) {
+                    gtag('event', 'conversion', {
+                        'send_to': sendTo,
+                        'transaction_id': '',
+                        'event_callback': callback
+                    });
+                }
+
+                function callback() {
+                    if (typeof(url) != 'undefined') {
+                        window.location = url;
+                    }
+                }
+
+                switch (type){
+                    case "request": //Hund-Request
+                        if (state.isBuyerNotApplied !== "1") return;
+                        report(requestSendTo);
+                        return false;
+                    case "submit": //Hund-Review
+                        if (state.isBuyerSubmitted !== "0") return;
+                        report(submitSendTo);
+                        return false;
+                    case "orderID": //Hund-OrderID
+                        report(orderIDSendTo);
+                        return false;
+                    default:
+                        throw new Error("gtagReportConversion type error!!!");
+                }
+            }
+        },
+        actions: {
+            increment: function (context) {
+                context.commit('increment')
+            }
+        }
+    });
+</script>
+
+<script type="text/x-template" id="header-common-template">
+<div>
+    <div class="MountGao-header">
+        <div class="MountGao-topNavigation">
+            <div class="container contentBox">
+                <div class="inner-container">
+                    <div class="main-logo">
+                        <a :href="urlObj.home">
+                            <img src="/Public/images/art-logo_us.png" :alt="domainName"></a>
+                    </div>
+                    <div class="nav-list">
+                        <a href="javascript:void(0);" class="nav-item">Filter
+                            <div class="menu MountGao-drop-menu">
+                                <div class="arrow"></div>
+                                <div class="menuWrapper">
+                                    <ul class="J_filter menu-category-list deal-category-list">
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.filter.latestDeals">Latest deals</a></li>
+                                    </ul>
+                                </div>
+                            </div></a>
+                        <a href="javascript:void(0);" class="nav-item">Category
+                            <div class="menu MountGao-drop-menu">
+                                <div class="arrow"></div>
+                                <div class="menuWrapper">
+                                    <ul class="menu-category-list coupon-category-list">
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.fashion">Fashion</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.electronic">Electronics</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.health">Health</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.sports">Sports</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.home">Home</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.momBaby">Mom & baby</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.pet">Pet</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.category.toys">Toys</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+                        <a :href="urlObj.upcoming" class="nav-item">Upcoming</a>
+                        <a :href="urlObj.guide" class="nav-item">Guide</a>
+                        <a href="javascript:void(0);" class="nav-item">Help
+                            <div class="menu MountGao-drop-menu">
+                                <div class="arrow"></div>
+                                <div class="menuWrapper">
+                                    <ul class="J_filter menu-category-list deal-category-list">
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.help.faq">FAQ</a></li>
+                                        <li><a class="menu-category-list-link"
+                                               :href="urlObj.help.contact">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div></a>
+                    </div>
+                    <a :href="urlObj.account" class="user-center-icon">
+                        <div class="icon-font-account pr">
+                            <i class="iconfont fs20">&#xe6ca;</i></div>
+                    </a>
+                    <div class="nav-list pull-right manage-nav-list">
+                        <a :href="urlObj.wishList" class="nav-item pr">
+                            <i class="iconfont fs20" style="color: #fff;">&#xe8e3;</i>
+                            <span class="review-num-circle" style="right: -10px;top: 7px;"
+                                  v-if="isWishListNumShow">{{wishListNum}}</span></a>
+                        <a :href="urlObj.dealManager" class="nav-item pr">
+                            Deal Manager<span class="review-num-circle"
+                                              style="right: -10px;top: 7px;"
+                                              v-if="isWaitReviewNumShow">{{waitReviewNum}}</span></a>
+                        <span class="divide-liner">|</span>
+                        <a :href="urlObj.archive" class="nav-item">Archive</a>
+                    </div>
+                    <form :action="urlObj.search" class="searchBar" method="GET">
+                        <div class="searchBar-input-box">
+                            <input type="text" class="searchBar-input"
+                                   placeholder="Search Amazon, product, ASIN" name="search"
+                                   autocomplete="off" spellcheck="false" dir="auto"
+                                   :value="keyWords">
+                        </div>
+                        <button type="submit" class="searchBar-submit">
+                            <i class="iconfont fs18">&#xe605;</i></button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="MountGao-header-mobile">
+        <div class="mobile-header-top">
+            <form :action="urlObj.search" method="get">
+                <div class="mobile-header-bar">
+                    <div class="mobile-header-menu"
+                         @click.stop="displayDropDownMenu(dropDownMenus.mobileDropNavList)">
+                        <i class="iconfont fs24">&#xe7c7;</i>
+                    </div>
+                    <div class="mobile-search-bar">
+                        <input type="text" class="mobile-search-bar-input"
+                               placeholder="Search Amazon, product, ASIN" name="search"
+                               autocomplete="off" spellcheck="false" dir="auto" id="mobileSearchInput"
+                               :value="keyWords"
+                               @focus="displayDropDownMenu(dropDownMenus.mobileDropSearchAction)">
+                    </div>
+                    <div class="mobile-header-menu" @click.stop="clearSearchInput()"
+                         v-show="dropDownMenuCurr === dropDownMenus.mobileDropSearchAction">
+                        <i class="iconfont fs24" >&#xe685;</i>
+                    </div>
+                    <div class="mobile-header-menu pr"
+                         @click.stop="displayDropDownMenu(dropDownMenus.mobileDropAccountAction)"
+                         v-show="dropDownMenuCurr !== dropDownMenus.mobileDropSearchAction">
+                        <div class="icon-font-account">
+                            <i class="iconfont fs24">&#xe6ca;</i>
+                        </div>
+                        <span class="review-num-circle" v-if="isMobileAccountNumShow">{{mobileAccountNum}}</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="mobile-search-action"
+                     v-show="dropDownMenuCurr === dropDownMenus.mobileDropSearchAction">
+                    <div class="pt50 pb50 text-center">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="button" class="btn btn-primary ml15"
+                                @click.stop="displayDropDownMenu(dropDownMenus.mobileDropSearchAction)">Cancel</button>
+                    </div>
+                </div>
+                <div class="mobile-submenu-v2"
+                     v-show="dropDownMenuCurr === dropDownMenus.mobileDropNavList">
+                    <div class="smallSearchContainer contentBox">
+                        <strong class="mobile-submenu-domain">{{domainName}}</strong>
+                        <i class="iconfont fs16"
+                           @click.stop="displayDropDownMenu(dropDownMenus.mobileDropNavList)">&#xe685;</i>
+                    </div>
+                    <div class="hidden-large">
+                        <div class="deals-accordion">
+                            <div class="deals-accordion-toggle"
+                                 @click.stop="displayMobileDropDownMenu(mobileDropDownMenus.filter)">
+                                Filter <span class="icon-font-down iconfont">&#xe7ca;</span></div>
+                            <div class="accordion-links"
+                                 :style="getMobileDropDownMenuStyle('filter')">
+                                <a :href="urlObj.filter.latestDeals">Latest deals</a>
+                            </div>
+                        </div>
+                        <div class="deals-accordion">
+                            <div class="deals-accordion-toggle"
+                                 @click.stop="displayMobileDropDownMenu(mobileDropDownMenus.category)">
+                                Category <span class="icon-font-down iconfont">&#xe7ca;</span></div>
+                            <div class="accordion-links"
+                                 :style="getMobileDropDownMenuStyle('category')">
+                                <a :href="urlObj.category.fashion">Fashion</a>
+                                <a :href="urlObj.category.electronic">Electronics</a>
+                                <a :href="urlObj.category.health">Health</a>
+                                <a :href="urlObj.category.sports">Sports</a>
+                                <a :href="urlObj.category.home">Home</a>
+                                <a :href="urlObj.category.momBaby">Mom & baby</a>
+                                <a :href="urlObj.category.pet">Pet</a>
+                                <a :href="urlObj.category.toys">Toys</a>
+                            </div>
+                        </div>
+                        <div class="deals-accordion">
+                            <a class="deals-accordion-toggle mb0" :href="urlObj.guide">Guide</a>
+                        </div>
+                    </div>
+                    <div class="aboutUsLinks">
+                        <div class="aboutUsSection">
+                            <a :href="urlObj.home">Home</a>
+                            <a :href="urlObj.help.contact">Contact Us</a>
+                            <a :href="urlObj.help.faq">Help</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropDownList pa pl5p pr5p"
+                     v-show="dropDownMenuCurr === dropDownMenus.mobileDropAccountAction">
+                    <p class="bor-b-e5gray">
+                        <a :href="urlObj.account" class="block pt15 pb15 fs14 lh1 tdn tc">Account</a>
+                    </p>
+                    <p class="bor-b-e5gray">
+                        <a :href="urlObj.dealManager" class="block pt15 pb15 fs14 lh1 tdn tc pr">
+                            Deal Manager<span class="review-num-circle static"
+                                              v-if="isWaitReviewNumShow">{{waitReviewNum}}</span></a>
+                    </p>
+                    <p class="bor-b-e5gray">
+                        <a :href="urlObj.wishList" class="block pt15 pb15 fs14 lh1 tdn tc pr">
+                            Wish List<span class="review-num-circle static"
+                                           v-if="isWishListNumShow">{{wishListNum}}</span></a>
+                    </p>
+                    <p><a :href="urlObj.archive" class="block fs14 lh1 tdn pt15 pb15 tc">Archive</a></p></div>
+            </form>
+        </div>
+        <div class="mobile-nav-bar">
+            <ul>
+                <li>
+                    <a :href="urlObj.home"
+                       :class="[{'active': navCurr === navs.home}]">
+                        <div>Deals</div></a>
+                </li>
+                <li>
+                    <a :href="urlObj.upcoming"
+                       :class="[{'active': navCurr === navs.upcoming}]">
+                        <div>Upcoming</div></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile-mask" v-show="dropDownMenuCurr !== ''"
+             @click.stop="displayDropDownMenu('')"></div>
+    </div>
+</div>
+</script>
+<script>
+    Vue.component('header-common', {
+        template: '#header-common-template',
+        props: {
+            navCurr: {
+                type: String,
+                required: false,
+                default: ""
+            },
+        },
+        data: function () {
+            return {
+                dropDownMenuCurr: "",
+                mobileDropDownMenuCurr: "",
+                domainName: "Hundsonvine",
+                keyWords: "",
+                navs: {
+                    home: "home",
+                    upcoming: "upcoming"
+                },
+                dropDownMenus: {
+                    mobileDropAccountAction: "mobileDropAccountAction",
+                    mobileDropNavList: "mobileDropNavList",
+                    mobileDropSearchAction: "mobileDropSearchAction"
+                },
+                mobileDropDownMenus: {
+                    filter: "filter",
+                    category: "category"
+                },
+                urlObj: {
+                    home: "/Index/index",
+                    upcoming: "/Goods/upcoming",
+                    guide: "/Index/guide",
+                    search: "/Goods/search",
+                    wishList: "/Buyer/wishList",
+                    dealManager: "/Manage/dealManager",
+                    archive: "/Manage/archive",
+                    account: "/Buyer/account",
+                    help: {
+                        faq: "/Index/help",
+                        contact: "/Index/contact"
+                    },
+                    filter: {
+                        latestDeals: "/Goods/filter?cond=endDate"
+                    },
+                    category: {
+                        fashion: "/Goods/category?category=fashion",
+                        electronic: "/Goods/category?category=electronic",
+                        health: "/Goods/category?category=health",
+                        sports: "/Goods/category?category=sports",
+                        home: "/Goods/category?category=home",
+                        momBaby: "/Goods/category?category=momBaby",
+                        pet: "/Goods/category?category=pet",
+                        toys: "/Goods/category?category=Toys"
+                    }
+                },
+                maxDisplayNum: 99
+            }
+        },
+        methods:{
+            formatNum: function (num) {
+                var maxDisplayNum = this.maxDisplayNum;
+                return num > maxDisplayNum ? (maxDisplayNum + "+") : num;
+            },
+            displayDropDownMenu: function (menu) {
+                this.dropDownMenuCurr === menu ? (this.dropDownMenuCurr = "") : (this.dropDownMenuCurr = menu);
+            },
+            displayMobileDropDownMenu: function (menu) {
+                this.mobileDropDownMenuCurr === menu ? (this.mobileDropDownMenuCurr = "") : (this.mobileDropDownMenuCurr = menu);
+            },
+            clearSearchInput: function() {
+                var mobileSearchInput = document.querySelector("#mobileSearchInput");
+                if(!mobileSearchInput) return;
+                mobileSearchInput.value = "";
+                mobileSearchInput.focus();
+                this.dropDownMenuCurr = this.dropDownMenus.mobileDropSearchAction;
+            },
+            getMobileDropDownMenuStyle: function (menu) {
+                var mobileDropDownMenus = this.mobileDropDownMenus,
+                    mobileDropDownMenuCurr = this.mobileDropDownMenuCurr,
+                    height = "";
+
+                switch (menu) {
+                    case mobileDropDownMenus.filter:
+                        height = "30px";
+                        break;
+                    case mobileDropDownMenus.category:
+                        height = "216px";
+                        break;
+                    default:
+                        throw new Error("mobileDropDownMenuStyle menu error");
+                }
+
+                return {'height': mobileDropDownMenuCurr === menu ? height : ''};
+
+            }
+        },
+        computed:{
+            waitReviewNum: function () {
+                return this.formatNum(this.$store.state.waitReviewNum);
+            },
+            wishListNum: function () {
+                return this.formatNum(this.$store.state.wishListNum);
+            },
+            isWaitReviewNumShow: function () {
+                return parseInt(this.waitReviewNum) > 0;
+            },
+            isWishListNumShow: function () {
+                return parseInt(this.wishListNum) > 0;
+            },
+            mobileAccountNum: function () {
+                if (this.isWaitReviewNumShow) {
+                    return this.waitReviewNum;
+                }else if (this.isWishListNumShow) {
+                    return this.wishListNum;
+                } else {
+                    return 0;
+                }
+            },
+            isMobileAccountNumShow: function () {
+                return parseInt(this.mobileAccountNum) > 0;
+            }
+        },
+        created:function () {
+
+        }
+    })
+</script>
+
+<script>
+    new Vue({
+        el:"#box",
+        store: MOUNTGAO.DATA.store,
+        data:{
+            navMenuCurr: "Account",
+            profileURL: "www.amazon.com/gp/profile/amzn1.account.AEGT5VKFDB3I2LHG",
+            payPalAccount: "test@qq.com",
+            buyerEmail: "952772885@qq.com"
+        }
+    })
+</script>
+</body>
+</html>
