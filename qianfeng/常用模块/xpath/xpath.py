@@ -1,6 +1,6 @@
 from lxml import etree
 
-# 生成对象
+# 生成对象(本地用parse，网络用HTML)
 tree = etree.parse('xpath.html')
 
 # print(tree)
