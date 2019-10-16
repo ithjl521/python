@@ -7,7 +7,8 @@ os.environ['http_proxy'] = ''
 
 
 
-url = r"http://www.baidu.com"
+# url = r"http://www.baidu.com"
+url = 'http://www.fanjian.net/jiantu-3'
 
 # Ä£ÄâÇëÇóÍ·
 headers = {

@@ -4,7 +4,7 @@ num = 0
 
 # 创建一个全局的ThreadLocal对象，使每个线程有独立的存储空间
 # 每个线程对ThreadLocal对象都可以读写，但是互不影响
-local = threading.local()
+local = threading.Local()
 
 def run(x,n):
 	x = x+n

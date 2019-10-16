@@ -15,7 +15,7 @@ time.sleep(3)
 # 查找input输入框
 my_input = browser.find_element_by_id('kw')
 # 往输入框写文字
-my_input.send_keys('python')
+my_input.send_keys('中国')
 time.sleep(2)
 #查找搜索按钮
 button = browser.find_elements_by_class_name('s_btn')[0]
