@@ -3,7 +3,7 @@ BASE_DIRS = os.path.dirname(__file__)
 
 # 参数
 options = {
-	'port':'8088'
+	'port':'8080'
 }
 
 # 配置
