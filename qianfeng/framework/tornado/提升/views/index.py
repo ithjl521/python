@@ -185,7 +185,10 @@ class TemplateHandler(RequestHandler):
 		# 渲染模板，传递参数
 		self.render('home.html',num=temp,per=per,**per,stus=stus,mySum=mySum)
 		
-		
+class SqlTestHandler(RequestHandler):
+	def get(self,*args,**kwargs):
+		self.render('sql_test.html')
+		print(self.application)
 		
 		
 		
