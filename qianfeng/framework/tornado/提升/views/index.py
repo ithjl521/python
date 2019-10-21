@@ -190,7 +190,73 @@ class SqlTestHandler(RequestHandler):
 		self.render('sql_test.html')
 		print(self.application)
 		
+
+class PCookieHandler(RequestHandler):
+	def get(self,*args,**kwargs):
+		# 原理：通过设置header的Set-Cookie来实现的
+		# domain:提交cookie时匹配的域名
+		# path：提交cookie时匹配的路径
+		# expires：设置cookie有效期，可以是时间戳整数，元组，datetime类型值，为UTC时间
+		# expires_days:cookie有效期天数，优先级低于expire
+		self.set_cookie(name='username',value='hjl',domain=None,expires=None,path='/',expires_days=None,**kwargs)
+		self.write('设置cookie ok\r\n')
 		
+		# 获取cookie
+		cookie = self.get_cookie(name='username',default='king long')
+		self.write('获取到的cookie值'+cookie+'\n')
 		
+		# 清除一个cookie
+		self.clear_cookie(name='username',path='/',domain=None)
+		# 清除所有cookie
+		self.clear_all_cookies(path='/',domain=None)
+			
+			
+class SCookieHandler(RequestHandler):
+	def get(self,*args,**kwargs):
+		# 使用安全cookie需要配置cookie_secret
+		self.set_secure_cookie('hjl','good')
+		self.write('ok')
+		
+		# 获取
+		cookie = self.get_secure_cookie(name='hjl',value='default')
+		self.write(cookie)
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 		

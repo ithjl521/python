@@ -10,5 +10,7 @@ options = {
 settings = {
 	'static_path':os.path.join(BASE_DIRS,'static'),
 	'template_path':os.path.join(BASE_DIRS,'templates'),
-	'debug':True
+	'debug':True,
+	'cookie_secret':'abcd6105701=aganlahbaibla126shgagha',
+	'xsrf_cookies':True
 }

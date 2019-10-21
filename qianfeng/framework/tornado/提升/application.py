@@ -47,6 +47,12 @@ class Application(tornado.web.Application):
 			 # 数据库
 			 (r'/sql_test',index.SqlTestHandler),
 			 
+			 # 普通cookie
+			 (r'/p_cookie',index.PCookieHandler),
+			 
+			 # 安全cookie
+			 (r'/s_cookie',index.SCookieHandler),
+			 
 			 # 静态路由，要放在所有路由最下面
 			 (r'/(.*)$',tornado.web.StaticFileHandler,
 			 {'path':os.path.join(config.BASE_DIRS,'static/html'),'default_filename':'index.html'}),
