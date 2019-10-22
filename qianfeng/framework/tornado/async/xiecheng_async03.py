@@ -16,12 +16,12 @@ def genCoroutine(func):
 		gen2 = next(gen1) # longIo生成器
 		
 		def run(g):
-			res = next(g)
+			res = next(g) # 执行整个reqA
 			try:
 				gen1.send(res) # 返回给reqA数据
 			except:
 				pass
-			
+		# 耗时操作（longIo）启动一个新线程去执行
 		threading.Thread(target=run,args=(gen2,)).start()
 	
 	return wrapper

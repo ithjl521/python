@@ -53,6 +53,8 @@ class Application(tornado.web.Application):
 			 # 安全cookie
 			 (r'/s_cookie',index.SCookieHandler),
 			 
+			 
+			 
 			 # 静态路由，要放在所有路由最下面
 			 (r'/(.*)$',tornado.web.StaticFileHandler,
 			 {'path':os.path.join(config.BASE_DIRS,'static/html'),'default_filename':'index.html'}),
