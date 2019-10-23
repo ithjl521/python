@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{url_for('static',filename='css/content.css')}}">
+
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+
+    {% macro hello()%}
+        <h4>macro 定义函数</h4>
+    {%endmacro%}
+
+    {{hello()}}
+
+    {% macro say_hello(name)%}
+    <h4>m很高兴见到你{{name}}</h4>
+    {%endmacro%}
+
+    {{say_hello('buff')}}
+
+    {%from 'mac.html' import what%}
+    {{what()}}
+</div>
