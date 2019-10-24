@@ -4,7 +4,7 @@ from App.views import init_blue
 from App.settings import envs
 
 def create_app():
-	app = Flask(__name__)
+	app = Flask(__name__,template_folder='../templates',static_folder='../static')
 	
 	# 初始化配置
 	app.config.from_object(envs.get('develop'))
