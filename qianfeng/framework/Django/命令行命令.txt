@@ -1,0 +1,5 @@
+创建项目：django-admin startproject 项目名
+创建App（应用）：python manage.py startapp App
+
+生成迁移文件：python manage.py makemigrations
+执行迁移，生成表：python mange.py migrate
