@@ -5,7 +5,7 @@ from django.http import HttpResponse
 # Create your views here.
 from django.shortcuts import render
 
-from App.models import Student
+from App.models import Student, Person
 
 
 def hello(request):
@@ -65,3 +65,33 @@ def delete_student(request):
     student.delete()
 
     return HttpResponse('delete success')
+
+
+def add_persons(request):
+    for i in range(15):
+        person = Person()
+        flag = random.randrange(100)
+        person.p_name = "tom%d" % i
+        person.p_age = flag
+        person.p_sex = flag % 2
+        person.save()
+    return HttpResponse('批量插入成功')
+
+
+def get_persons(request):
+    persons = Person.objects.filter(p_age__gt=18).filter(p_age__lt=80)
+
+    persons_two = Person.filter(p_age__gt=50)
+    context = {
+        'persons':persons
+    }
+    return render(request, 'person_list.html', context=context)
+
+
+def add_person(request):
+    # person = Person.objects.create(p_name='sunck', p_age=16, p_sex=True)
+
+    person = Person.create(p_name='jack')
+    person.save()
+
+    return HttpResponse('加入一个用户成功')
