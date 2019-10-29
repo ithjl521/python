@@ -1,0 +1,21 @@
+{%extends 'tmp_home.html'%}
+
+{% load static %}
+
+{% block content %}
+<h3>哈哈哈，孙子</h3>
+{% endblock %}
+
+{% block header %}
+{{block.super}}
+<h3>覆盖父类</h3>
+{% endblock %}
+
+{% block footer %}
+{%include 'footer.html'%}
+{% endblock %}
+
+{% block ext_css %}
+<!--<link rel="stylesheet" href="/static/css/home_mine.css">-->
+<link rel="stylesheet" href="{% static 'css/home_mine.css'%}">
+{% endblock %}

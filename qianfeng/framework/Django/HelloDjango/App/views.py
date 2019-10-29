@@ -21,7 +21,7 @@ def index(request):
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'tmp_home.html')
 
 
 def other_urls(request):
@@ -79,19 +79,30 @@ def add_persons(request):
 
 
 def get_persons(request):
-    persons = Person.objects.filter(p_age__gt=18).filter(p_age__lt=80)
+    # persons = Person.objects.filter(p_age__gt=18).filter(p_age__lt=80)
+    #
+    # persons_two = Person.filter(p_age__gt=50)
+    persons = Person.objects.all().order_by("-id")  # 按照ID倒序排序
+    persons_values = persons.values()
 
-    persons_two = Person.filter(p_age__gt=50)
+    print(persons_values)
     context = {
-        'persons':persons
+        'persons': persons
     }
     return render(request, 'person_list.html', context=context)
 
 
 def add_person(request):
     # person = Person.objects.create(p_name='sunck', p_age=16, p_sex=True)
+    # person = Person(p_name='hjl', p_age=18, p_sex=True, p_hobby='sleeping')
 
     person = Person.create(p_name='jack')
     person.save()
 
     return HttpResponse('加入一个用户成功')
+
+
+def get_person(request):
+    person = Person.objects.all().first()
+    print(person)
+    return HttpResponse('获取一条数据成功')

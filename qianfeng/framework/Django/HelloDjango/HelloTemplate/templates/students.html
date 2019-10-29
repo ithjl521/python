@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>students</title>
+</head>
+<body>
+<ul>
+    {%for student in students%}
+        <li>{{forloop.counter}}:{{student.s_name}}</li>
+    {%endfor%}
+</ul>
+{{code | safe}}
+{{code}}
+</body>
+</html>

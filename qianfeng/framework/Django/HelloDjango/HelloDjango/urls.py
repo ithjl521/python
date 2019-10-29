@@ -27,4 +27,6 @@ urlpatterns = [
 
     path('app/', include('App.urls')),
     path('three/', include('Three.urls')),
+    path('h_tmp/', include('HelloTemplate.urls')),
+    path('two/', include(('Two.urls', 'Two'), namespace='two')),
 ]

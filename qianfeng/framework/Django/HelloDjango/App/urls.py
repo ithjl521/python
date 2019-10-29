@@ -12,4 +12,5 @@ urlpatterns = [
     path('add_person/', views.add_person),
     path('add_persons/', views.add_persons),
     path('get_persons/', views.get_persons),
+    path('get_person/', views.get_person),
 ]
