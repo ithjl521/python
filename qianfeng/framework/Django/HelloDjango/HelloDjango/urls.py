@@ -29,4 +29,6 @@ urlpatterns = [
     path('three/', include('Three.urls')),
     path('h_tmp/', include('HelloTemplate.urls')),
     path('two/', include(('Two.urls', 'Two'), namespace='two')),
+
+    path('models/', include(('HelloModel.urls', 'HelloModel'), namespace='models')),
 ]

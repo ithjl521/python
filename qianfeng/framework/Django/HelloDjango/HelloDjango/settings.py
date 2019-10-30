@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Three',
     'HelloTemplate',
     'Two',
+    'HelloModel',
 ]
 
 MIDDLEWARE = [
