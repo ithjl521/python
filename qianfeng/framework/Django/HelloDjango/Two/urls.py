@@ -29,4 +29,10 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
     path('mine/', views.mine, name='mine'),
+
+    # file
+    path('upload_file/', views.upload_file, name='upload_file'),
+
+    # 缓存
+    path('news/', views.news, name='news'),
 ]

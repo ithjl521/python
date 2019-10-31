@@ -11,3 +11,18 @@ class Person(models.Model):
 class IDcard(models.Model):
     id_num = models.CharField(max_length=18, unique=True)
     id_person = models.OneToOneField(Person, null=True, on_delete=models.CASCADE)
+
+
+class Animal(models.Model):
+    a_name = models.CharField(max_length=16)
+
+    class Meta:
+        abstract = True
+
+
+class Cat(Animal):
+    c_eat = models.CharField(max_length=32)
+
+
+class Dog(Animal):
+    d_legs = models.CharField(max_length=4)

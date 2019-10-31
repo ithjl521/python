@@ -1,12 +1,15 @@
 import base64
 import os
 import random
+from time import sleep
 
+from django.core.cache import caches
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
+from django.views.decorators.cache import cache_page
 
 from Two.models import Student
 
@@ -162,3 +165,45 @@ def mine(request):
         }
     }
     return JsonResponse(data=data)
+
+
+def upload_file(request):
+    if request.method == 'GET':
+        return render(request, 'upload.html')
+    elif request.method == 'POST':
+        icon = request.FILES.get('icon')
+
+        with open(r'C:\Users\jiuzhou\Desktop\python\qianfeng\framework\Django\HelloDjango\static\img\icon.jpg', 'wb') as fp:
+            for part in icon.chunks():
+                fp.write(part)
+                fp.flush()
+
+        return HttpResponse('上传成功')
+
+
+# @cache_page(timeout=30,cache='redis_backend')
+@cache_page(timeout=30)
+def news(request):
+    # cache = caches['redis_backend']
+    # result = cache.get('news')
+    # if result:
+    #     return HttpResponse(result)
+
+    news_list = []
+
+    for i in range(10):
+        news_list.append('区块链火了%d' % i)
+
+    sleep(3)
+
+    data = {
+        'news_list': news_list,
+    }
+
+    response = render(request, 'news.html', context=data)
+    # try:
+    # cache.set('news', response.content)
+    # except Exception as e:
+    #     return HttpResponse('error')
+
+    return response
