@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'HelloTemplate',
     'Two',
     'HelloModel',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +161,9 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/upload')
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme':'advance',
+    'width': 800,
+    'height': 600,
+}

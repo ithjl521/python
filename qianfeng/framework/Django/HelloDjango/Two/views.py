@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.urls import reverse
 from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_exempt
 
 from Two.models import Student
 
@@ -166,7 +167,8 @@ def mine(request):
     }
     return JsonResponse(data=data)
 
-
+# 豁免CSRF
+@csrf_exempt
 def upload_file(request):
     if request.method == 'GET':
         return render(request, 'upload.html')
