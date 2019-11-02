@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from project import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('app/', include(('App.urls', 'App'), namespace='app'))
+    path('axf/', include(('App.urls', 'App'), namespace='axf'))
 ]
+
+# 配置debug toolbar
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns
