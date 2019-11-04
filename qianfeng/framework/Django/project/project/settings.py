@@ -128,13 +128,18 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+# 静态地址
 STATIC_URL = '/static/'
 
+# 静态文件路径
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# 上传文件前缀
+MEDIA_KEY_PREFIX = '/static/uploads/'
+
+# 上传文件路径
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploads')
 
 INTERNAL_IPS = ('127.0.0.1', 'localhost')  # debug toolbar允许在哪些访问ip上显示
