@@ -1,14 +1,18 @@
+import uuid
+
 from django.contrib.auth.hashers import check_password
+from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
 
-from App.models import MainWheel, MainNav, MainMustBuy, MainShop, MainShow, FoodType, Goods, AXFUser
+from App.models import MainWheel, MainNav, MainMustBuy, MainShop, MainShow, FoodType, Goods, AXFUser, Cart, Order, \
+    OrderGoods
 from App.views_constant import ALL_TYPE, ORDER_TOTAL, ORDER_PRICE_UP, ORDER_PRICE_DOWN, ORDER_SALE_UP, ORDER_SALE_DOWN, \
     HTTP_USER_EXISTS, HTTP_OK
-from App.views_helper import hash_str
+from App.views_helper import hash_str, send_email_activate, get_total_price
 from project.settings import MEDIA_KEY_PREFIX
 
 
@@ -104,7 +108,18 @@ def market_with_params(request, typeid, childcid, order_rule):
 
 
 def cart(request):
-    return render(request, 'main/cart.html')
+    carts = Cart.objects.filter(c_user=request.user)
+
+    is_all_select = not carts.filter(c_is_select=False).exists()
+
+    data = {
+        'title': '购物车',
+        'carts': carts,
+        'is_all_select': is_all_select,
+        'total_price': get_total_price(),
+    }
+
+    return render(request, 'main/cart.html', context=data)
 
 
 def mine(request):
@@ -120,7 +135,7 @@ def mine(request):
         data['is_login'] = True
         data['username'] = user.u_username
         data['icon'] = MEDIA_KEY_PREFIX + user.u_icon.url
-        
+
     return render(request, 'main/mine.html', context=data)
 
 
@@ -147,14 +162,27 @@ def register(request):
 
         user.save()
 
+        u_token = uuid.uuid4().hex
+
+        cache.set(u_token, user.id, timeout=68 * 60 * 24)
+
+        send_email_activate(username, email, u_token)
+
         return redirect(reverse('axf:login'))
 
 
 def login(request):
     if request.method == 'GET':
+        error_message = request.session.get('error_message')
+
         data = {
             'title': '登录',
         }
+
+        # 存在则传递过去，并删除
+        if error_message:
+            del request.session['error_message']
+            data['error_message'] = error_message
 
         return render(request, 'user/login.html', context=data)
     elif request.method == 'POST':
@@ -165,12 +193,21 @@ def login(request):
         if users.exists():
             user = users.first()
             if hash_str(password) == user.u_password:
-                request.session['user_id'] = user.id
-
-                return redirect(reverse('axf:mine'))
+                # 判断激活
+                if user.is_active:
+                    request.session['user_id'] = user.id
+                    return redirect(reverse('axf:mine'))
+                else:
+                    print('未激活')
+                    request.session['error_message'] = '未激活'
+                    return redirect(reverse('axf:login'))
             else:
+                print('密码错误')
+                request.session['error_message'] = '密码错误'
                 return redirect(reverse('axf:login'))
         else:
+            print('用户不存在')
+            request.session['error_message'] = '用户不存在'
             return redirect(reverse('axf:login'))
 
 
@@ -195,3 +232,128 @@ def check_user(request):
 def logout(request):
     request.session.flush()
     return redirect(reverse('axf:mine'))
+
+
+def activate(request):
+    u_token = request.GET.get('u_token')
+    user_id = cache.get(u_token)
+
+    if user_id:
+        cache.delete(u_token)
+
+        user = AXFUser.objects.get(pk=user_id)
+        user.is_active = True
+
+        user.save()
+
+        return redirect(reverse('axf:login'))
+
+    return render(request, 'user/activate_fail.html')
+
+
+def add_to_cart(request):
+    goodsid = request.GET.get('goodsid')
+
+    carts = Cart.objects.filter(c_user=request.user).filter(c_goods_id=goodsid)
+
+    if carts.exists():
+        cart_obj = carts.first()
+        cart_obj.c_goods_num = cart_obj.c_goods_num + 1
+    else:
+        cart_obj = Cart()
+        cart_obj.c_goods_id = goodsid
+        cart_obj.c_user = request.user
+
+    cart_obj.save()
+
+    data = {
+        'status': 200,
+        'msg': 'add_success',
+        'c_goods_num': cart_obj.c_goods_num,
+    }
+
+    return JsonResponse(data=data)
+
+
+def change_cart_state(request):
+    cart_id = request.GET.get('cartid')
+    cart_obj = Cart.objects.get(pk=cart_id)
+    cart_obj.c_is_select = not cart_obj.c_is_select
+    cart_obj.save()
+
+    is_all_select = Cart.objects.filter(c_user=request.user).filter(c_is_select=False).exists()
+
+    data = {
+        'status': 200,
+        'msg': 'ok',
+        'c_is_select': cart_obj.c_is_select,
+        'is_all_select': is_all_select,
+        'total_price': get_total_price(),
+    }
+
+    return JsonResponse(data=data)
+
+
+def sub_shopping(request):
+    cartid = request.GET.get('cartid')
+    cart_obj = Cart.objects.get(pk=cartid)
+
+    data = {
+        'status': 200,
+        'msg': 'ok',
+        'total_price': get_total_price(),
+    }
+
+    if cart_obj.c_goods_num > 1:
+        cart_obj.c_goods_num = cart_obj.c_goods_num - 1
+        cart_obj.save()
+        data['c_goods_num'] = cart_obj.c_goods_num
+    else:
+        cart_obj.delete()
+        data['c_goods_num'] = 0
+
+    return JsonResponse(data=data)
+
+
+def all_select(request):
+    cart_list = request.GET.get('cart_list')
+    cart_list = cart_list.split('#')
+
+    carts = Cart.objects.filter(id__in=cart_list)
+
+    for cart_obj in carts:
+        cart_obj.c_is_select = not cart_obj.c_is_select
+        cart_obj.save()
+
+    data = {
+        'status': 200,
+        'msg': 'ok',
+        'total_price': get_total_price(),
+    }
+
+    return JsonResponse(data=data)
+
+
+def make_order(request):
+    carts = Cart.objects.filter(c_user=request.user).filter(c_is_select=True)
+
+    order = Order()
+    order.o_user = request.user
+    order.o_price = get_total_price()
+    order.save()
+
+    for cart_obj in carts:
+        ordergoods = OrderGoods()
+        ordergoods.o_order = order
+        ordergoods.o_goods_num = cart_obj.c_goods_num
+        ordergoods.o_goods = cart_obj.c_goods
+        ordergoods.save()
+        cart_obj.delete()
+
+    data = {
+        'status': 200,
+        'msg': 'ok',
+        'order_id': order.id,
+    }
+
+    return JsonResponse(data=data)

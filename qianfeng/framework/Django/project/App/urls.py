@@ -18,5 +18,13 @@ urlpatterns = [
 
     path('logout/', views.logout, name='logout'),
 
+    path('activate/', views.activate, name='activate'),
+
+    path('addtocart/', views.add_to_cart, name='add_to_cart'),
+    path('changecartstate/', views.change_cart_state, name='change_cart_state'),
+    path('subshopping/', views.sub_shopping, name='sub_shopping'),
+    path('allselect/', views.all_select, name='all_select'),
+
+    path('makeorder/', views.make_order, name='make_order'),
 
 ]

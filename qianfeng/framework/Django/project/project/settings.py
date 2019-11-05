@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'middleware.middleware.LoginMiddleware',
+
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -143,3 +145,29 @@ MEDIA_KEY_PREFIX = '/static/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploads')
 
 INTERNAL_IPS = ('127.0.0.1', 'localhost')  # debug toolbar允许在哪些访问ip上显示
+
+# 邮件服务器配置
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'it_hjl@163.com'
+EMAIL_HOST_PASSWORD = 'ithjl163'
+
+SERVER_HOST = '127.0.0.1'
+SERVER_PORT = '8000'
+
+# 缓存
+CACHES = {
+    # 使用数据库缓存要创建缓存表：python manage.py createcachetable
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+        'TIMEOUT': 60 * 5
+    },
+    'redis_backend': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': "redis://127.0.0.1:6379/1",
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
