@@ -26,5 +26,8 @@ urlpatterns = [
     path('allselect/', views.all_select, name='all_select'),
 
     path('makeorder/', views.make_order, name='make_order'),
+    path('orderdetail/', views.order_detail, name='order_detail'),
+    path('orderlistnotpay/', views.order_list_not_pay, name='order_list_not_pay'),
+    path('payed/', views.payed, name='payed'),
 
 ]

@@ -36,4 +36,4 @@ def get_total_price():
     for cart in carts:
         total += cart.c_goods_num * cart.c_goods.price
 
-    return total
+    return "{:.2f}".format(total)
